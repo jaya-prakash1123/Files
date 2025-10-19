@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Vault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="lockscreen">
+    <h2>🔒 Enter Access Key</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="unlock()">Unlock</button>
+  </div>
+
+  <div id="vault" style="display:none;">
+    <h1>🗂️ Welcome to Your Vault</h1>
+    <p>Upload, view, or download your files anytime.</p>
+
+    <div class="section">
+      <h3>📜 Certificates</h3>
+      <ul>
+        <li><a href="assets/certificates/sample_cert.pdf" download>Download Certificate</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>💻 Codes</h3>
+      <ul>
+        <li><a href="assets/codes/hello.py" download>Download Python Code</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>📸 Photos</h3>
+      <ul>
+        <li><a href="assets/photos/sample_image.jpg" download>Download Image</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
