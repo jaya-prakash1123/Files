@@ -1,45 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Personal Vault</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EchoDrive — Personal Cloud</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="app">
+    <div id="lock-screen" class="center">
+      <h2>🔐 Access EchoDrive</h2>
+      <input id="pass-input" placeholder="Enter access key" />
+      <div class="btn-row">
+        <button id="unlock-btn">Enter</button>
+      </div>
+      <p id="lock-msg" class="muted"></p>
+    </div>
 
-  <div id="lockscreen">
-    <h2>🔒 Enter Access Key</h2>
-    <input type="password" id="password" placeholder="Enter password">
-    <button onclick="unlock()">Unlock</button>
+    <div id="dashboard" class="hidden">
+      <header>
+        <div class="left">
+          <button id="home-btn" title="Home">🏠</button>
+          <button id="back-btn" title="Back">↩</button>
+        </div>
+        <div class="center">
+          <input id="search" placeholder="Search files or folders" />
+        </div>
+        <div class="right">
+          <span id="quota">Storage: --</span>
+          <button id="theme-btn" title="Toggle theme">🌓</button>
+        </div>
+      </header>
+
+      <main>
+        <aside id="sidebar">
+          <div class="sidebar-item selected" data-view="overview">Overview</div>
+          <div class="sidebar-item" data-view="dir">Files</div>
+          <div class="sidebar-item" data-view="recent">Recent</div>
+          <div class="sidebar-item" data-view="bin">Bin</div>
+        </aside>
+
+        <section id="content">
+          <div id="overview-view" class="view">
+            <div class="cards" id="cards"></div>
+          </div>
+
+          <div id="dir-view" class="view hidden">
+            <div class="dir-controls">
+              <h3 id="dir-title">Directory</h3>
+              <div>
+                <input id="file-picker" type="file" webkitdirectory directory multiple style="display:none" />
+                <input id="single-file-picker" type="file" multiple style="display:none" />
+                <button id="add-btn" title="Add file">＋</button>
+                <button id="upload-hidden" style="display:none">upload</button>
+              </div>
+            </div>
+
+            <div id="file-list" class="file-list"></div>
+          </div>
+
+          <div id="recent-view" class="view hidden">
+            <h3>Recent files</h3>
+            <div id="recent-list" class="file-list"></div>
+          </div>
+
+          <div id="bin-view" class="view hidden">
+            <h3>Trash (Bin)</h3>
+            <div id="bin-list" class="file-list"></div>
+          </div>
+        </section>
+      </main>
+
+      <div id="three-dot-menu" class="menu hidden">
+        <button data-action="open">Open / Download</button>
+        <button data-action="rename">Rename</button>
+        <button data-action="move">Move To</button>
+        <button data-action="copy">Copy To</button>
+        <button data-action="compress">Compress (ZIP)</button>
+        <button data-action="delete">Delete → Bin</button>
+        <button data-action="info">Info</button>
+      </div>
+
+      <footer>
+        <small>EchoDrive — frontend + Firebase storage</small>
+      </footer>
+    </div>
   </div>
 
-  <div id="vault" style="display:none;">
-    <h1>🗂️ Welcome to Your Vault</h1>
-    <p>Upload, view, or download your files anytime.</p>
+  <!-- JS libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-    <div class="section">
-      <h3>📜 Certificates</h3>
-      <ul>
-        <li><a href="assets/certificates/sample_cert.pdf" download>Download Certificate</a></li>
-      </ul>
-    </div>
+  <!-- Firebase (compat for simple usage) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
 
-    <div class="section">
-      <h3>💻 Codes</h3>
-      <ul>
-        <li><a href="assets/codes/hello.py" download>Download Python Code</a></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>📸 Photos</h3>
-      <ul>
-        <li><a href="assets/photos/sample_image.jpg" download>Download Image</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
