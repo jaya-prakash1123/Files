@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials - PDF Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Study Materials Library</h1>
+        <p class="tagline">Access educational resources and study materials</p>
+    </header>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search PDFs by title or category...">
+        <button id="clearSearch" class="clear-btn" aria-label="Clear search">×</button>
+    </div>
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Categories Container (populated by JavaScript) -->
+        <div id="categoriesContainer"></div>
+        <!-- Search Results Container (hidden by default) -->
+        <div id="searchResults" class="search-results" style="display: none;"></div>
+        <!-- No Results Message (hidden by default) -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <p>No results found. Try a different search term.</p>
+        </div>
+    </main>
+    <!-- PDF Modal Viewer -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <button id="closeModal" class="close-btn" aria-label="Close modal">×</button>
+            <iframe id="pdfViewer" title="PDF Viewer"></iframe>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Study Materials Library. All rights reserved.</p>
+    </footer>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
